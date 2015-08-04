@@ -43,7 +43,7 @@ var OverlayView = Mn.ItemView.extend({
   // Otherwise, emit a `click:child` event.
   _handleClick(e) {
     var clickedSelf = e.target === e.currentTarget;
-    var eventName = self ? 'click' : 'click:child';
+    var eventName = clickedSelf ? 'click' : 'click:child';
     this.trigger(eventName);
   }
 });
