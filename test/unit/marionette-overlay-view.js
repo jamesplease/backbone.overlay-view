@@ -6,7 +6,7 @@ import OverlayView from '../../src/marionette-overlay-view';
 
 var overlayView;
 describe('Marionette.OverlayView', () => {
-  beforeEach(function() {
+  beforeEach(() => {
     overlayView = new OverlayView();
   });
 
