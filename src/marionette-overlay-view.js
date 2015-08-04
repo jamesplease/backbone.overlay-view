@@ -12,9 +12,10 @@ var OverlayView = Mn.ItemView.extend({
     click: '_handleClick'
   },
 
+  // Whether or not the view is currently displaying
   isDisplaying() {
     return this._isDisplaying;
-  }
+  },
 
   // Shows the overlay. Then, when it's clicked, close it.
   display() {
@@ -25,6 +26,7 @@ var OverlayView = Mn.ItemView.extend({
     this.trigger('display');
   },
 
+  // Hide the overlay.
   hide() {
     if (!this._isDisplaying) { return; }
     this._isDisplaying = false;
