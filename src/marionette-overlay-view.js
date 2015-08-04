@@ -34,4 +34,6 @@ var OverlayView = Mn.ItemView.extend({
   }
 });
 
+Mn.OverlayView = OverlayView;
+
 export default OverlayView;
