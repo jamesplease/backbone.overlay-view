@@ -31,8 +31,8 @@ var OverlayView = Mn.ItemView.extend({
     if (!this._isDisplaying) { return; }
     this._isDisplaying = false;
     this.$el.addClass('hide');
-    // Ensure that the click event has been unregistered
-    this.off('click');
+    // Ensure that the registered click event has been unregistered
+    this.off('click', this.hide);
     this.trigger('hide');
   },
 
