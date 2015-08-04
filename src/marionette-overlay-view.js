@@ -12,18 +12,30 @@ var OverlayView = Mn.ItemView.extend({
     click: '_handleClick'
   },
 
+  isDisplaying() {
+    return this._isDisplaying;
+  }
+
   // Shows the overlay. Then, when it's clicked, close it.
   display() {
+    if (this._isDisplaying) { return; }
+    this._isDisplaying = true;
     this.$el.removeClass('hide');
     this.once('click', this.hide);
+    this.trigger('display');
   },
 
   hide() {
+    if (!this._isDisplaying) { return; }
+    this._isDisplaying = false;
+    this.$el.addClass('hide');
     // Ensure that the click event has been unregistered
     this.off('click');
-    this.$el.addClass('hide');
     this.trigger('hide');
   },
+
+  // Whether or not the overlayView is displayed
+  _isDisplaying: false,
 
   // Emit the `click` event if the overlay is clicked directly.
   // Otherwise, emit a `click:child` event.
