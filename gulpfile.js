@@ -158,7 +158,7 @@ gulp.task('stylus', function() {
     .pipe($.stylus({
       compress:true
     }))
-    .pipe(gulp.dest('./dest'));
+    .pipe(gulp.dest('./dist'));
 });
 
 // Ensure that linting occurs before browserify runs. This prevents
