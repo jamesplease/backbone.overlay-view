@@ -58,7 +58,7 @@ createLintTask('lint-src', ['src/**/*.js']);
 createLintTask('lint-test', ['test/**/*.js']);
 
 // Build two versions of the library
-gulp.task('build', ['lint-src', 'clean'], function(done) {
+gulp.task('build', ['lint-src', 'clean', 'stylus'], function(done) {
   esperanto.bundle({
     base: 'src',
     entry: config.entryFileName,
@@ -151,6 +151,14 @@ gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
 gulp.task('test', ['lint-src', 'lint-test'], function() {
   require('babel-core/register');
   return test();
+});
+
+gulp.task('stylus', function() {
+  return gulp.src('./src/marionette.overlay-view.styl')
+    .pipe($.stylus({
+      compress:true
+    }))
+    .pipe(gulp.dest('./dest'));
 });
 
 // Ensure that linting occurs before browserify runs. This prevents

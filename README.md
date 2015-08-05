@@ -9,6 +9,17 @@ dropdowns, modals, etc.
 [![Dependency Status](https://david-dm.org/jmeas/marionette-overlay-view.svg)](https://david-dm.org/jmeas/marionette-overlay-view)
 [![devDependency Status](https://david-dm.org/jmeas/marionette-overlay-view/dev-status.svg)](https://david-dm.org/jmeas/marionette-overlay-view#info=devDependencies)
 
+### Installation
+
+The easiest way is through `npm` or `bower`.
+
+```js
+npm install marionette.overlay-view
+bower install marionette.overlay-view
+```
+
+Be sure to iclude both the JS and CSS files in your application.
+
 ### Motivation
 
 A common interface element on client side applications is an element that blocks the
