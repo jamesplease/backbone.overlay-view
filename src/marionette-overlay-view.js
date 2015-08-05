@@ -20,19 +20,21 @@ var OverlayView = Mn.ItemView.extend({
   // Shows the overlay. Then, when it's clicked, close it.
   display() {
     if (this._isDisplaying) { return; }
-    this.trigger('before:display');
+    this.triggerMethod('before:display');
     this._isDisplaying = true;
     this.$el.removeClass('overlay-view-hide');
-    this.trigger('display');
+    this.triggerMethod('display');
+    return this;
   },
 
   // Hide the overlay.
   hide() {
     if (!this._isDisplaying) { return; }
-    this.trigger('before:hide');
+    this.triggerMethod('before:hide');
     this._isDisplaying = false;
     this.$el.addClass('overlay-view-hide');
-    this.trigger('hide');
+    this.triggerMethod('hide');
+    return this;
   },
 
   // Whether or not the overlayView is displayed
@@ -43,7 +45,7 @@ var OverlayView = Mn.ItemView.extend({
   _handleClick(e) {
     var clickedSelf = e.target === e.currentTarget;
     var eventName = clickedSelf ? 'click' : 'click:child';
-    this.trigger(eventName);
+    this.triggerMethod(eventName);
 
     // Hide the view, if it's being displayed
     if (clickedSelf && this.isDisplaying()) {

@@ -34,15 +34,15 @@ overlayView.display();
 ### Child Elements
 
 The OverlayView intentionally has no template, and is intentionally not a LayoutView,
-but this doesn't mean that you can't associate children views with it.
+but this doesn't mean that you can't place child views within it.
 
 Rather than using the Region API, which is great for when views need to be swapped,
-you should simply use the DOM API to append a child view's element directly into the
-overlay view's element. Then, when the overlay is closed, you can destroy the child
-view.
+I recommend that simply use the DOM API to append a child view's element directly
+into the overlay view's element. Then, when the overlay is closed, you can destroy
+the child view.
 
-The reason I suggest doing this is because adding a region abstraction doesn't add
-any benefit in this particular situation.
+The reason I suggest doing this is because adding a region abstraction doesn't seem
+to add any benefit in this particular situation over existing DOM APIs.
 
 This may look something like:
 
@@ -51,12 +51,12 @@ This may look something like:
 overlayView.$el.append(dropdownView.$el);
 
 // Destroy the dropdown when the overlayView is hidden
-overlayView.on('hide', dropdownView.destroy.bind(dropdownView));
+overlayView.once('hide', dropdownView.destroy.bind(dropdownView));
 
 // Show the overlay view
 overlayView.display();
 
-// Clicking the overlay will cause the dropdown to be destroyed.
+// Click the overlay to destroy the dropdown.
 ```
 
 ### Methods
@@ -71,15 +71,20 @@ default, the view is not displaying.
 Display the view, if it isn't already displayed, by removing the
 `.overlay-view-hidden` class.
 
+Returns the view instance.
+
 ##### `hide()`
 
 Hide the view, if it's being displayed, by adding the `.overlay-view-hidden`
 class.
 
-### Events
+Returns the view instance.
+
+### `triggerMethod` Events
 
 In addition to the normal Backbone and Marionette events, this View has a handful of
-custom events.
+custom events. These are fired with `triggerMethod`, so the corresponding method
+will be executed on the view, if it exists.
 
 ##### `before:display`
 
