@@ -57,17 +57,17 @@ overlayView.display();
 
 ### Methods
 
-#### `isDisplaying()`
+##### `isDisplaying()`
 
 Returns a Boolean indicating whether or not the view is currently displaying. By
 default, the view is not displaying.
 
-#### `display()`
+##### `display()`
 
 Display the view, if it isn't already displayed, by removing the
 `.overlay-view-hidden` class.
 
-#### `hide()`
+##### `hide()`
 
 Hide the view, if it's being displayed, by adding the `.overlay-view-hidden`
 class.
@@ -77,29 +77,29 @@ class.
 In addition to the normal Backbone and Marionette events, this View has a handful of
 custom events.
 
-#### `before:display`
+##### `before:display`
 
 Triggered just before the view is displayed.
 
-#### `display`
+##### `display`
 
 Triggered just after the view is displayed.
 
-#### `before:hide`
+##### `before:hide`
 
 Triggered jst before the view is hidden.
 
-#### `hide`
+##### `hide`
 
 Triggered just after the view is hidden.
 
-#### `click`
+##### `click`
 
 Triggered when the user clicks the view itself, but not a child of the view. It's
 generally safer to use the `hide` event to track when the overlay closes, because it
 may not always close due to a click (for instance, when the user completes the task
 offered by the modal / dropdown).
 
-#### `click:child`
+##### `click:child`
 
 Triggered when the user clicks a descendant element of the view.
