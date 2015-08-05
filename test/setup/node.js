@@ -1,16 +1,5 @@
-// Create our JSDom document
-global.jsdom = require('jsdom').jsdom;
-global.document = jsdom(`
-  <html>
-    <head></head>
-    <body></body>
-  </html>
-`);
-global.window = global.document.parentWindow;
-global.navigator = window.navigator = {
-  userAgent: 'NodeJS JSDom',
-  appVersion: ''
-};
+// Set up a simple JSDom config
+require('simple-jsdom');
 
 global.chai = require('chai');
 global.sinon = require('sinon');
