@@ -1,17 +1,16 @@
-import Bb from 'backbone';
+import Backbone from 'backbone';
 import $ from 'jquery';
-Bb.$ = $;
-import Mn from 'backbone.marionette';
-import OverlayView from '../../src/marionette-overlay-view';
+Backbone.$ = $;
+import OverlayView from '../../src/backbone.overlay-view';
 
 var overlayView;
-describe('Marionette.OverlayView', () => {
+describe('Backbone.OverlayView', () => {
   beforeEach(() => {
     overlayView = new OverlayView();
   });
 
   it('should be an instance of Backbone.View', () => {
-    expect(overlayView).to.be.instanceof(Bb.View);
+    expect(overlayView).to.be.instanceof(Backbone.View);
   });
 
   it('should expose a `display` and `hide` method', () => {
