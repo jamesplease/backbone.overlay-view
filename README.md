@@ -18,7 +18,7 @@ npm install marionette.overlay-view
 bower install marionette.overlay-view
 ```
 
-Be sure to iclude both the JS and CSS files in your application.
+Be sure to include both the JS and CSS files in your application.
 
 ### Motivation
 
@@ -51,7 +51,7 @@ Instead of using the Region API, I recommend that you use existing DOM APIs to a
 a child view's element directly into the overlay view's element. Then, when the overlay
 is closed, you can destroy the child view.
 
-The reason I suggest doing this is because adding the Region API is of particular use
+The reason I recommend this is because adding the Region API is of particular use
 when it comes to swapping views. For one-off attaches and detaches, like what is
 typical when using this view, the region abstraction doesn't really provide much
 benefit over using other DOM APIs.
