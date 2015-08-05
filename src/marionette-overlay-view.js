@@ -7,17 +7,18 @@ var OverlayView = Mn.ItemView.extend({
   // that covers up the entirety of the application
   template: false,
 
-  // Convert click DOM events into BB Events
+  // Convert DOM click events into BB Events
   events: {
     click: '_handleClick'
   },
 
-  // Whether or not the view is currently displaying
+  // Returns a Boolean indicating whether or not the view is currently
+  // displaying
   isDisplaying() {
     return this._isDisplaying;
   },
 
-  // Shows the overlay. Then, when it's clicked, close it.
+  // Show the overlay
   display() {
     if (this._isDisplaying) { return; }
     this.triggerMethod('before:display');
@@ -27,7 +28,7 @@ var OverlayView = Mn.ItemView.extend({
     return this;
   },
 
-  // Hide the overlay.
+  // Hide the overlay
   hide() {
     if (!this._isDisplaying) { return; }
     this.triggerMethod('before:hide');
@@ -41,7 +42,8 @@ var OverlayView = Mn.ItemView.extend({
   _isDisplaying: false,
 
   // Emit the `click` event if the overlay is clicked directly.
-  // Otherwise, emit a `click:child` event.
+  // Otherwise, emit a `click:child` event. Then, hide the view
+  // if it is displayed.
   _handleClick(e) {
     var clickedSelf = e.target === e.currentTarget;
     var eventName = clickedSelf ? 'click' : 'click:child';
