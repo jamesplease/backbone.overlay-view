@@ -96,7 +96,7 @@ Triggered just after the view is displayed.
 
 ##### `before:hide`
 
-Triggered jst before the view is hidden.
+Triggered just before the view is hidden.
 
 ##### `hide`
 
