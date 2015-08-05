@@ -1,21 +1,21 @@
-# marionette.overlay-view
+# backbone.overlay-view
 
 A view that covers your webpage, and is closed when clicked. It's useful as a background for
 dropdowns, modals, etc.
 
-[![Travis build status](http://img.shields.io/travis/jmeas/marionette.overlay-view.svg?style=flat)](https://travis-ci.org/jmeas/marionette.overlay-view)
-[![Code Climate](https://codeclimate.com/github/jmeas/marionette.overlay-view/badges/gpa.svg)](https://codeclimate.com/github/jmeas/marionette.overlay-view)
-[![Test Coverage](https://codeclimate.com/github/jmeas/marionette.overlay-view/badges/coverage.svg)](https://codeclimate.com/github/jmeas/marionette.overlay-view)
-[![Dependency Status](https://david-dm.org/jmeas/marionette.overlay-view.svg)](https://david-dm.org/jmeas/marionette.overlay-view)
-[![devDependency Status](https://david-dm.org/jmeas/marionette.overlay-view/dev-status.svg)](https://david-dm.org/jmeas/marionette.overlay-view#info=devDependencies)
+[![Travis build status](http://img.shields.io/travis/jmeas/backbone.overlay-view.svg?style=flat)](https://travis-ci.org/jmeas/backbone.overlay-view)
+[![Code Climate](https://codeclimate.com/github/jmeas/backbone.overlay-view/badges/gpa.svg)](https://codeclimate.com/github/jmeas/backbone.overlay-view)
+[![Test Coverage](https://codeclimate.com/github/jmeas/backbone.overlay-view/badges/coverage.svg)](https://codeclimate.com/github/jmeas/backbone.overlay-view)
+[![Dependency Status](https://david-dm.org/jmeas/backbone.overlay-view.svg)](https://david-dm.org/jmeas/backbone.overlay-view)
+[![devDependency Status](https://david-dm.org/jmeas/backbone.overlay-view/dev-status.svg)](https://david-dm.org/jmeas/backbone.overlay-view#info=devDependencies)
 
 ### Installation
 
 The easiest way to install this is through `npm` or `bower`.
 
 ```js
-npm install marionette.overlay-view
-bower install marionette.overlay-view
+npm install backbone.overlay-view
+bower install backbone.overlay-view
 ```
 
 Be sure to include both the JS and CSS files in your application.
@@ -33,7 +33,7 @@ that any other view in my app can utilize.
 
 ```js
 // Create a single overlayView for your entire app
-var overlayView = new OverlayView();
+var overlayView = new Backbone.OverlayView();
 
 // Display it
 overlayView.display();
@@ -44,19 +44,11 @@ overlayView.display();
 
 ### Child Views
 
-The OverlayView intentionally has no template, and is intentionally not a LayoutView,
-but this doesn't mean that you can't place child views within it.
+Using nested views within the OverlayView is common practice. I recommend that you
+stick to existing DOM APIs to append another View's element into the OverlayView's
+element. Then, when the OverlayView is hidden, you can destroy the nested view.
 
-Instead of using the Region API, I recommend that you use existing DOM APIs to append
-a child view's element directly into the overlay view's element. Then, when the overlay
-is closed, you can destroy the child view.
-
-The reason I recommend this is because adding the Region API is of particular use
-when it comes to swapping views. For one-off attaches and detaches, like what is
-typical when using this view, the region abstraction doesn't really provide much
-benefit over using other DOM APIs.
-
-This may look something like:
+This might look something like:
 
 ```js
 // Attach the dropdown element to the overlay view
@@ -92,11 +84,7 @@ class.
 
 Returns the view instance.
 
-### `triggerMethod` Events
-
-In addition to the normal Backbone and Marionette events, this View has a handful of
-custom events. These are fired with `triggerMethod`, so the corresponding method
-will be executed on the view, if it exists.
+### Events
 
 ##### `before:display`
 
@@ -108,7 +96,7 @@ Triggered just after the view is displayed.
 
 ##### `before:hide`
 
-Triggered jst before the view is hidden.
+Triggered just before the view is hidden.
 
 ##### `hide`
 

@@ -1,8 +1,8 @@
 {
-  "name": "marionette.overlay-view",
-  "version": "0.0.2",
+  "name": "backbone.overlay-view",
+  "version": "0.0.3",
   "description": "A view that covers the app and emits click events.",
-  "main": "dist/marionette.overlay-view.js",
+  "main": "dist/backbone.overlay-view.js",
   "scripts": {
     "test": "gulp",
     "test-browser": "gulp test-browser",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmeas/marionette.overlay-view.git"
+    "url": "https://github.com/jmeas/backbone.overlay-view.git"
   },
   "files": [
     "app"
@@ -20,9 +20,9 @@
   "author": "Jmeas <jellyes2@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmeas/marionette.overlay-view/issues"
+    "url": "https://github.com/jmeas/backbone.overlay-view/issues"
   },
-  "homepage": "https://github.com/jmeas/marionette.overlay-view",
+  "homepage": "https://github.com/jmeas/backbone.overlay-view",
   "devDependencies": {
     "babel-core": "^5.2.17",
     "babel-eslint": "^4.0.5",
@@ -60,7 +60,7 @@
     "watchify": "^3.3.1"
   },
   "babelBoilerplateOptions": {
-    "entryFileName": "marionette.overlay-view",
+    "entryFileName": "backbone.overlay-view",
     "mainVarName": "OverlayView",
     "mochaGlobals": [
       "stub",
@@ -70,7 +70,6 @@
   },
   "dependencies": {
     "backbone": "^1.2.1",
-    "backbone.marionette": "^2.4.2",
     "underscore": "^1.8.3"
   }
 }

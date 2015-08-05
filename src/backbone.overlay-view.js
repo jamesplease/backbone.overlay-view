@@ -1,11 +1,7 @@
-import Mn from 'backbone.marionette';
+import Backbone from 'backbone';
 
-var OverlayView = Mn.ItemView.extend({
+var OverlayView = Backbone.View.extend({
   className: 'overlay-view overlay-view-hide',
-
-  // The OverlayView doesn't need a template: it's simply an element
-  // that covers up the entirety of the application
-  template: false,
 
   // Convert DOM click events into BB Events
   events: {
@@ -21,20 +17,20 @@ var OverlayView = Mn.ItemView.extend({
   // Show the overlay
   display() {
     if (this._isDisplaying) { return; }
-    this.triggerMethod('before:display');
+    this.trigger('before:display');
     this._isDisplaying = true;
     this.$el.removeClass('overlay-view-hide');
-    this.triggerMethod('display');
+    this.trigger('display');
     return this;
   },
 
   // Hide the overlay
   hide() {
     if (!this._isDisplaying) { return; }
-    this.triggerMethod('before:hide');
+    this.trigger('before:hide');
     this._isDisplaying = false;
     this.$el.addClass('overlay-view-hide');
-    this.triggerMethod('hide');
+    this.trigger('hide');
     return this;
   },
 
@@ -47,7 +43,7 @@ var OverlayView = Mn.ItemView.extend({
   _handleClick(e) {
     var clickedSelf = e.target === e.currentTarget;
     var eventName = clickedSelf ? 'click' : 'click:child';
-    this.triggerMethod(eventName);
+    this.trigger(eventName);
 
     // Hide the view, if it's being displayed
     if (clickedSelf && this.isDisplaying()) {
@@ -56,6 +52,6 @@ var OverlayView = Mn.ItemView.extend({
   }
 });
 
-Mn.OverlayView = OverlayView;
+Backbone.OverlayView = OverlayView;
 
 export default OverlayView;

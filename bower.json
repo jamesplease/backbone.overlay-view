@@ -1,12 +1,12 @@
 {
-  "name": "marionette.overlay-view",
-  "version": "0.0.2",
-  "homepage": "https://github.com/jmeas/marionette.overlay-view",
+  "name": "backbone.overlay-view",
+  "version": "0.0.3",
+  "homepage": "https://github.com/jmeas/backbone.overlay-view",
   "authors": [
     "Jmeas <jellyes2@gmail.com>"
   ],
   "description": "A view that covers the app and emits click events.",
-  "main": "dest/marionette.overlay-view.js",
+  "main": "dest/backbone.overlay-view.js",
   "keywords": [
     "marionette",
     "backbone",
@@ -25,7 +25,6 @@
   ],
   "dependencies": {
     "backbone": "~1.2.1",
-    "underscore": "~1.8.3",
-    "backbone.marionette": "~2.4.2"
+    "underscore": "~1.8.3"
   }
 }

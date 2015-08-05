@@ -1,14 +1,10 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('backbone.marionette')) : typeof define === 'function' && define.amd ? define(['backbone.marionette'], factory) : global.OverlayView = factory(global.Mn);
-})(this, function (Mn) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('backbone')) : typeof define === 'function' && define.amd ? define(['backbone'], factory) : global.OverlayView = factory(global.Backbone);
+})(this, function (Backbone) {
   'use strict';
 
-  var OverlayView = Mn.ItemView.extend({
+  var OverlayView = Backbone.View.extend({
     className: 'overlay-view overlay-view-hide',
-
-    // The OverlayView doesn't need a template: it's simply an element
-    // that covers up the entirety of the application
-    template: false,
 
     // Convert DOM click events into BB Events
     events: {
@@ -26,10 +22,10 @@
       if (this._isDisplaying) {
         return;
       }
-      this.triggerMethod('before:display');
+      this.trigger('before:display');
       this._isDisplaying = true;
       this.$el.removeClass('overlay-view-hide');
-      this.triggerMethod('display');
+      this.trigger('display');
       return this;
     },
 
@@ -38,10 +34,10 @@
       if (!this._isDisplaying) {
         return;
       }
-      this.triggerMethod('before:hide');
+      this.trigger('before:hide');
       this._isDisplaying = false;
       this.$el.addClass('overlay-view-hide');
-      this.triggerMethod('hide');
+      this.trigger('hide');
       return this;
     },
 
@@ -54,7 +50,7 @@
     _handleClick: function _handleClick(e) {
       var clickedSelf = e.target === e.currentTarget;
       var eventName = clickedSelf ? 'click' : 'click:child';
-      this.triggerMethod(eventName);
+      this.trigger(eventName);
 
       // Hide the view, if it's being displayed
       if (clickedSelf && this.isDisplaying()) {
@@ -63,10 +59,10 @@
     }
   });
 
-  Mn.OverlayView = OverlayView;
+  Backbone.OverlayView = OverlayView;
 
-  var marionette_overlay_view = OverlayView;
+  var backbone_overlay_view = OverlayView;
 
-  return marionette_overlay_view;
+  return backbone_overlay_view;
 });
-//# sourceMappingURL=marionette-overlay-view.js.map
+//# sourceMappingURL=backbone.overlay-view.js.map
