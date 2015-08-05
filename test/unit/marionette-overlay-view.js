@@ -18,4 +18,8 @@ describe('Marionette.OverlayView', () => {
     expect(overlayView.display).to.be.a('function');
     expect(overlayView.hide).to.be.a('function');
   });
+
+  it('should not be displaying', () => {
+    expect(overlayView.isDisplaying()).to.be.false;
+  });
 });

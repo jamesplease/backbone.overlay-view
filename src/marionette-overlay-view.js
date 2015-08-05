@@ -1,7 +1,7 @@
 import Mn from 'backbone.marionette';
 
 var OverlayView = Mn.ItemView.extend({
-  className: 'overlay-view hide',
+  className: 'overlay-view overlay-view-hide',
 
   // The OverlayView doesn't need a template: it's simply an element
   // that covers up the entirety of the application
@@ -20,20 +20,20 @@ var OverlayView = Mn.ItemView.extend({
   // Shows the overlay. Then, when it's clicked, close it.
   display() {
     if (this._isDisplaying) { return; }
+    this.trigger('before:display');
     this._isDisplaying = true;
-    this.$el.removeClass('hide');
-    this.once('click', this.hide);
-    this.trigger('display');
+    this.$el.removeClass('overlay-view-hide');
+    this.once('click', this.hide).trigger('display');
   },
 
   // Hide the overlay.
   hide() {
     if (!this._isDisplaying) { return; }
+    this.trigger('before:hide');
     this._isDisplaying = false;
-    this.$el.addClass('hide');
+    this.$el.addClass('overlay-view-hide');
     // Ensure that the registered click event has been unregistered
-    this.off('click', this.hide);
-    this.trigger('hide');
+    this.off('click', this.hide).trigger('hide');
   },
 
   // Whether or not the overlayView is displayed
