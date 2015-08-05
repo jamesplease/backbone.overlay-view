@@ -1,6 +1,6 @@
 {
   "name": "marionette.overlay-view",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A view that covers the app and emits click events.",
   "main": "dist/marionette.overlay-view.js",
   "scripts": {
