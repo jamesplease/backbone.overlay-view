@@ -1,6 +1,6 @@
 # marionette.overlay-view
 
-A view that covers your webpage, and is closed when clicked. Useful as backgrounds for
+A view that covers your webpage, and is closed when clicked. It's useful as a background for
 dropdowns, modals, etc.
 
 [![Travis build status](http://img.shields.io/travis/jmeas/marionette.overlay-view.svg?style=flat)](https://travis-ci.org/jmeas/marionette.overlay-view)
@@ -11,7 +11,7 @@ dropdowns, modals, etc.
 
 ### Installation
 
-The easiest way is through `npm` or `bower`.
+The easiest way to install this is through `npm` or `bower`.
 
 ```js
 npm install marionette.overlay-view
@@ -22,12 +22,12 @@ Be sure to iclude both the JS and CSS files in your application.
 
 ### Motivation
 
-A common interface element on client side applications is an element that blocks the
+A common UI feature in client side applications is an element that blocks the
 user from interacting with the rest of the application. This is typically used when
 the user opens, say, a custom dropdown menu or a modal.
 
 Rather than associating a new overlay with each dropdown, I like to use a single view
-that any other view in my app can use.
+that any other view in my app can utilize.
 
 ### Basic Usage
 
@@ -42,18 +42,19 @@ overlayView.display();
 // You can use that event to close the modal / dropdown / do whatever.
 ```
 
-### Child Elements
+### Child Views
 
 The OverlayView intentionally has no template, and is intentionally not a LayoutView,
 but this doesn't mean that you can't place child views within it.
 
-Rather than using the Region API, which is great for when views need to be swapped,
-I recommend that simply use the DOM API to append a child view's element directly
-into the overlay view's element. Then, when the overlay is closed, you can destroy
-the child view.
+Instead of using the Region API, I recommend that you use existing DOM APIs to append
+a child view's element directly into the overlay view's element. Then, when the overlay
+is closed, you can destroy the child view.
 
-The reason I suggest doing this is because adding a region abstraction doesn't seem
-to add any benefit in this particular situation over existing DOM APIs.
+The reason I suggest doing this is because adding the Region API is of particular use
+when it comes to swapping views. For one-off attaches and detaches, like what is
+typical when using this view, the region abstraction doesn't really provide much
+benefit over using other DOM APIs.
 
 This may look something like:
 
