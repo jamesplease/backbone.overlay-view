@@ -27,20 +27,21 @@ var overlayView = new OverlayView();
 overlayView.display();
 
 // When the user clicks on it, it will hide itself and emit the `hide` event.
-// You can use that event to close the modal / dropdown / whatever.
+// You can use that event to close the modal / dropdown / do whatever.
 ```
 
 ### Child Elements
 
-The OverlayView intentionally has no template, and is intentionally not a LayoutView.
-But this doesn't mean that you can't associate children views with it.
+The OverlayView intentionally has no template, and is intentionally not a LayoutView,
+but this doesn't mean that you can't associate children views with it.
 
 Rather than using the Region API, which is great for when views need to be swapped,
 you should simply use the DOM API to append a child view's element directly into the
 overlay view's element. Then, when the overlay is closed, you can destroy the child
 view.
 
-Adding a region abstraction doesn't add any benefit in this particular situation!
+The reason I suggest doing this is because adding a region abstraction doesn't add
+any benefit in this particular situation.
 
 This may look something like:
 
@@ -53,6 +54,8 @@ overlayView.on('hide', dropdownView.destroy.bind(dropdownView));
 
 // Show the overlay view
 overlayView.display();
+
+// Clicking the overlay will cause the dropdown to be destroyed.
 ```
 
 ### Methods

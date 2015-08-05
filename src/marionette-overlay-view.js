@@ -23,7 +23,7 @@ var OverlayView = Mn.ItemView.extend({
     this.trigger('before:display');
     this._isDisplaying = true;
     this.$el.removeClass('overlay-view-hide');
-    this.once('click', this.hide).trigger('display');
+    this.trigger('display');
   },
 
   // Hide the overlay.
@@ -32,8 +32,7 @@ var OverlayView = Mn.ItemView.extend({
     this.trigger('before:hide');
     this._isDisplaying = false;
     this.$el.addClass('overlay-view-hide');
-    // Ensure that the registered click event has been unregistered
-    this.off('click', this.hide).trigger('hide');
+    this.trigger('hide');
   },
 
   // Whether or not the overlayView is displayed
@@ -45,6 +44,11 @@ var OverlayView = Mn.ItemView.extend({
     var clickedSelf = e.target === e.currentTarget;
     var eventName = clickedSelf ? 'click' : 'click:child';
     this.trigger(eventName);
+
+    // Hide the view, if it's being displayed
+    if (clickedSelf && this.isDisplaying()) {
+      this.hide();
+    }
   }
 });
 
