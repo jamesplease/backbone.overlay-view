@@ -1,6 +1,7 @@
 # marionette-overlay-view
 
-A view that covers the entire app and emits click events.
+A view that covers your webpage, and is closed when clicked. Useful as backgrounds for
+dropdowns, modals, etc.
 
 [![Travis build status](http://img.shields.io/travis/jmeas/marionette-overlay-view.svg?style=flat)](https://travis-ci.org/jmeas/marionette-overlay-view)
 [![Code Climate](https://codeclimate.com/github/jmeas/marionette-overlay-view/badges/gpa.svg)](https://codeclimate.com/github/jmeas/marionette-overlay-view)
