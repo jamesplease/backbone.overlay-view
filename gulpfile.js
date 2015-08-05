@@ -57,8 +57,12 @@ createLintTask('lint-src', ['src/**/*.js']);
 // Lint our test code
 createLintTask('lint-test', ['test/**/*.js']);
 
+gulp.task('build', function(done) {
+  runSequence(['clean', 'lint-src'], ['stylus', 'build-js'], done);
+});
+
 // Build two versions of the library
-gulp.task('build', ['lint-src', 'clean', 'stylus'], function(done) {
+gulp.task('build-js', ['lint-src', 'clean', 'stylus'], function(done) {
   esperanto.bundle({
     base: 'src',
     entry: config.entryFileName,
@@ -153,13 +157,22 @@ gulp.task('test', ['lint-src', 'lint-test'], function() {
   return test();
 });
 
-gulp.task('stylus', function() {
+gulp.task('stylus-uncompressed', function() {
+  return gulp.src('./src/marionette.overlay-view.styl')
+    .pipe($.stylus())
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('stylus-compressed', function() {
   return gulp.src('./src/marionette.overlay-view.styl')
     .pipe($.stylus({
       compress:true
     }))
+    .pipe($.rename('marionette.overlay-view.min.css'))
     .pipe(gulp.dest('./dist'));
 });
+
+gulp.task('stylus', ['stylus-uncompressed', 'stylus-compressed']);
 
 // Ensure that linting occurs before browserify runs. This prevents
 // the build from breaking due to poorly formatted code.
