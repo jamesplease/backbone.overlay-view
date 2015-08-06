@@ -55,7 +55,7 @@ This might look something like:
 overlayView.$el.append(dropdownView.$el);
 
 // Destroy the dropdown when the overlayView is hidden
-overlayView.once('hide', dropdownView.destroy.bind(dropdownView));
+dropdownView.listenToOnce(overlayView, 'hide', dropdownView.destroy);
 
 // Show the overlay view
 overlayView.display();
